@@ -1,0 +1,19 @@
+1,去除eslint代码检查
+在webpack.base.conf.js里面删掉下面:
+ test: /\.(js|vue)$/,
+    loader: 'eslint-loader',
+    enforce: 'pre',
+    include: [resolve('src'), resolve('test')],
+    options: {
+      formatter: require('eslint-friendly-formatter')
+    }
+  },
+
+  2,内页刷新js，css丢失问题
+  因为路由启用了HTML5的History模式，如果服务端没有做支持的话就会404可以把路由的的模式修改为hashbangconst 
+  router = new VueRouter({
+  history: false,
+  hashbang: true
+  ...
+	});
+  但是问题是如果用了这个地址栏会有#号
